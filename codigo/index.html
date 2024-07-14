@@ -12,6 +12,19 @@
         <main>
             <h1>{{ texto }}</h1>
             <h2 v-text="texto"></h2>
+
+            <input type="text" v-model="nombre">
+            <p>El nombre es: {{nombre}}</p>
+ 
+            <!--<pre>
+                {{$data}}
+            </pre>-->
+
+            NOTA: <input type="number" v-model="nota">
+            <strong v-if="nota && nota >= 5 && nota <=99">Tu nota es mayor a 5, enhorabuena</strong>
+            <strong v-else-if="nota && nota == 100">Excelente</strong>
+            <span v-else>Has suspendido</span>
+
         </main>
 
         <script src="https://unpkg.com/vue@2.7.16/dist/vue.js"></script>
