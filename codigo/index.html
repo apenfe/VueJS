@@ -10,25 +10,74 @@
     <body>
 
         <main>
+
+        <!-- EVENTOS -->
+
+            <ol>
+                <li v-for="(pelicula, indice) in peliculas">
+                    {{pelicula}} 
+                    <button @click="borrarPelicula(indice)">ELIMINAR PELICULA</button>
+                </li>
+            </ol>
+
+            <form @submit.prevent="crearPelicula">
+                <input type="text" v-model="peliculaNueva"/>
+                <input type="submit" value="añadir pelicula"/>
+            </form>
+
+            <!--
+            <button v-on:click="crearPelicula()">CREAR PELICULA</button>
+            <button @click="borrarPelicula()">ELIMINAR PELICULA</button>
+            -->
+            <hr/>
+
+        <!-- interpolacion/imprimir el contenido de variable del modelo/instancia vue -->
             <h1>{{ texto }}</h1>
             <h2 v-text="texto"></h2>
+            <hr/>
 
+        <!-- Two Way data binding / enlace de datos bidireccional y reactividad -->
             <input type="text" v-model="nombre">
             <p>El nombre es: {{nombre}}</p>
- 
+            <hr/>
+
             <!--<pre>
                 {{$data}}
             </pre>-->
 
+        <!-- directivas condicionales v-if -->
             NOTA: <input type="number" v-model="nota">
             <strong v-if="nota && nota >= 5 && nota <=99">Tu nota es mayor a 5, enhorabuena</strong>
             <strong v-else-if="nota && nota == 100">Excelente</strong>
             <span v-else>Has suspendido</span>
+            <hr/>
+
+        <!-- directiva de bucles v-for -->
+            <h1>Listado de peliculas (array)</h1>
+            <ol>
+                <li v-for="pelicula in peliculas">{{pelicula}}</li>
+            </ol>
+
+            <h1>Listado de frutas (array de objetos)</h1>
+            <ul>
+                <li v-for="(fruta,index) in frutas">
+                    {{index}}: {{fruta.nombre}} - {{fruta.temporada}}
+                </li>
+            </ul>
+
+            <h1>Superfruta (objeto)</h1>
+            <ul>
+                <li v-for="(value,key,index) in superfruta">
+                    {{index}}: {{key}} -> {{value}}
+                </li>
+            </ul>
+            <hr/>
 
         </main>
 
         <script src="https://unpkg.com/vue@2.7.16/dist/vue.js"></script>
         <script src="js/main.js"></script>
+
     </body>
 
 </html>
