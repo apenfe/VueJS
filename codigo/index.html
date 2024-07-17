@@ -11,6 +11,19 @@
 
         <main>
 
+        <!-- Propiedades computadas -->
+        <h1>{{nombre}}</h1>
+        <h1>{{nombreYapellidos}}</h1>
+
+        <h3>Listado ordenado</h3>
+        <ol>
+            <li v-for="(pelicula, indice) in peliculasOrdenadas">
+                {{pelicula}} 
+            </li>
+        </ol>
+
+        <hr/>
+
         <!-- EVENTOS -->
 
             <ol>
