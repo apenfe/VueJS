@@ -1,4 +1,4 @@
-'use strict'
+Vue.filter('mayusculas', (value) => value.toUpperCase());
 
 new Vue({
 
@@ -15,7 +15,8 @@ new Vue({
             {nombre: "fresa", temporada: "verano", precio: 'alto'}
         ],
         superfruta: {nombre: "mandarina", temporada: "verano", precio: 'bajo'},
-        peliculaNueva: null
+        peliculaNueva: null,
+        busqueda: null
     },
     methods: {
         crearPelicula(){
@@ -39,6 +40,27 @@ new Vue({
         peliculasOrdenadas(){
             var lista = this.peliculas.slice();
             return lista.sort();
+        },
+        buscarFruta(){
+            return this.frutas.filter((fruta) => fruta.nombre.includes(this.busqueda));
         }
     }
+});
+
+const vue2 = new Vue({
+
+    el: '#app',
+    data: {
+        texto: "Segunda instancia vue",
+    }
+
+});
+
+const vue3 = new Vue({
+
+    el: '#tercera',
+    data: {
+        texto: "Tercera instancia vue",
+    }
+    
 });

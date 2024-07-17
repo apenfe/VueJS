@@ -9,13 +9,36 @@
 
     <body>
 
+        <!-- UNA SEGUNDA y tercera INSTANCIA DE VUE -->
+        <div id="app">
+            <h1>{{texto}}</h1>
+        </div>
+        <hr/>
+
+        <div id="tercera">
+            <h1>{{texto}}</h1>
+        </div>
+        <hr/>
+
         <main>
+
+        <!-- filtros -->
+        <input type="search" v-model="busqueda" placeholder="buscar fruta"/>
+        
+        <ol>
+            <li v-for="(fruta, indice) in buscarFruta">
+                {{ fruta.nombre | mayusculas }}  <!-- Filtro -->
+            </li>
+        </ol>
+
+        <hr/>
 
         <!-- Propiedades computadas -->
         <h1>{{nombre}}</h1>
-        <h1>{{nombreYapellidos}}</h1>
+        <h1>{{nombreYapellidos | mayusculas }}</h1>  <!-- Filtro -->
 
         <h3>Listado ordenado</h3>
+
         <ol>
             <li v-for="(pelicula, indice) in peliculasOrdenadas">
                 {{pelicula}} 
