@@ -5,6 +5,15 @@
     <head>
         <meta charset="utf-8"/>
         <title>VueJS 2</title>
+
+        <style>
+            .like{
+                background-color: green;
+                color: white;
+                padding: 20px;
+            }
+        </style>
+
     </head>
 
     <body>
@@ -22,11 +31,23 @@
 
         <main>
 
+        <hr/>
+        <h1>Listado por AJAX</h1>
+
+        <ul v-if="posts">
+            <li v-for="(post, indice) in posts">
+                {{indice}}: {{post.title}}
+            </li>
+        </ul>
+        <span v-else>Cargando lista por ajax...</span>
+
+        <hr/>
+
         <!-- filtros -->
         <input type="search" v-model="busqueda" placeholder="buscar fruta"/>
         
         <ol>
-            <li v-for="(fruta, indice) in buscarFruta">
+            <li @click="marcar(indice)" v-bind:class="{like: indice==confirmado}" v-for="(fruta, indice) in buscarFruta">
                 {{ fruta.nombre | mayusculas }}  <!-- Filtro -->
             </li>
         </ol>
@@ -96,7 +117,7 @@
 
             <h1>Listado de frutas (array de objetos)</h1>
             <ul>
-                <li v-for="(fruta,index) in frutas">
+                <li @click="marcar(index)" v-bind:class="{like: index==confirmado}" v-for="(fruta,index) in frutas">
                     {{index}}: {{fruta.nombre}} - {{fruta.temporada}}
                 </li>
             </ul>
@@ -112,6 +133,7 @@
         </main>
 
         <script src="https://unpkg.com/vue@2.7.16/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
         <script src="js/main.js"></script>
 
     </body>

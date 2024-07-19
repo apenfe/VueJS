@@ -3,7 +3,14 @@ Vue.filter('mayusculas', (value) => value.toUpperCase());
 new Vue({
 
     el: 'main',
+    mounted(){
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then((respuesta) => {
+            this.posts = respuesta.data;
+        });
+    },
     data: {
+        posts: null,
         texto: "Hola mundo desde vue2",
         nombre: "Adrián",
         apellidos: "Peñalver Fernández",
@@ -16,7 +23,8 @@ new Vue({
         ],
         superfruta: {nombre: "mandarina", temporada: "verano", precio: 'bajo'},
         peliculaNueva: null,
-        busqueda: null
+        busqueda: '',
+        confirmado: null
     },
     methods: {
         crearPelicula(){
@@ -27,6 +35,9 @@ new Vue({
         borrarPelicula(indice){
             this.peliculas.splice(indice,1);
             alert('metodo borrar pelicula -->'+indice);
+        },
+        marcar(index){
+            this.confirmado = index;
         }
     },
     computed: {
