@@ -30,7 +30,28 @@
         <hr/>
 
         <main>
-            <frutas></frutas>
+            <hr>
+
+            <!--COMPONENTES DINAMICOS-->
+            <button @click="elegido = 'articulos'">Cargar articulos</button>
+            <button @click="elegido = 'padre'">Cargar padre</button>
+            <button @click="elegido = 'hijo'">Cargar hijo</button>
+            <component :is="elegido"></component>
+
+            <hr>
+            <padre></padre>
+
+            <hr>
+
+            <frutas :objeto="superfruta" inline-template> 
+
+                <div>
+                    <h1>COMPONENTE {{titulo}}</h1>
+                    <h3>{{objeto.nombre}}</h3>
+                    <hr>
+                </div>
+  
+            </frutas>
 
         <hr/>
 

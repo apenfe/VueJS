@@ -29,15 +29,30 @@ Vue.component('articulos', {
 });
 
 Vue.component('frutas', {
-
-    template: `
-        <h1>COMPONENTE {{titulo}}</h1>
-    `,
+    props: ['objeto'],
     data(){
         return{
             titulo: "frutas",
         }
+    },
+    mounted(){
+        console.log(this.objeto);
     }
+});
+
+Vue.component('padre', {
+    template: `<div>
+    <h1>COMPONENTE PADRE</h1>
+        <div>
+        <hijo></hijo>
+        </div>
+    </div>`
+});
+
+Vue.component('hijo', {
+    template: `<p style="background: yellow;">
+    soy un parrafo en el componente hijo
+    </p>`
 });
 
 
@@ -53,6 +68,7 @@ new Vue({
         });
     },
     data: {
+        elegido: 'padre',
         posts: null,
         texto: "Hola mundo desde vue2",
         nombre: "Adrián",
